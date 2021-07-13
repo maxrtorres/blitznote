@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/values/my_colors.dart';
+import 'package:notes_app/values/routes.dart';
 import 'package:notes_app/values/strings.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -22,22 +23,20 @@ class _HomeScreenState extends State<HomeScreen> {
                   decoration: BoxDecoration(
                     color: MyColors.colorAccent,
                   ),
-                  child: Text('Drawer'),
-                ),
-                ListTile(
-                  title: Text('Profile'),
-                  onTap: () {},
+                  child: Icon(Icons.add_a_photo),
                 ),
                 ListTile(
                   title: Text('Settings'),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, Routes.settingsRoute);
+                  },
                 ),
               ],
             ),
           ),
           appBar: AppBar(
             backgroundColor: MyColors.colorPrimary,
-            title: Text(Strings.appBarTitle),
+            title: Text(Strings.homeTitle),
           ),
           body: TabBarView(children: [
             Tab(icon: Icon(Icons.list)),
