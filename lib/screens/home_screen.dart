@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:notes_app/values/my_colors.dart';
 import 'package:notes_app/values/routes.dart';
 import 'package:notes_app/values/strings.dart';
+import 'package:notes_app/widgets/list_tab.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -12,7 +13,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-        length: 4,
+        length: 2,
         child: Scaffold(
           backgroundColor: MyColors.colorLight,
           endDrawer: Drawer(
@@ -39,10 +40,8 @@ class _HomeScreenState extends State<HomeScreen> {
             title: Text(Strings.homeTitle),
           ),
           body: TabBarView(children: [
-            Tab(icon: Icon(Icons.list)),
+            ListTab(),
             Tab(icon: Icon(Icons.search)),
-            Tab(icon: Icon(Icons.lightbulb)),
-            Tab(icon: Icon(Icons.share)),
           ]),
           bottomNavigationBar: Material(
             color: MyColors.colorDark,
@@ -50,8 +49,6 @@ class _HomeScreenState extends State<HomeScreen> {
               tabs: [
                 Tab(icon: Icon(Icons.list)),
                 Tab(icon: Icon(Icons.search)),
-                Tab(icon: Icon(Icons.lightbulb)),
-                Tab(icon: Icon(Icons.share)),
               ],
             ),
           ),
