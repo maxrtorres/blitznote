@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/screens/list_tab.dart';
 import 'package:notes_app/values/my_colors.dart';
 import 'package:notes_app/values/routes.dart';
 import 'package:notes_app/values/strings.dart';
-import 'package:notes_app/widgets/list_tab.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -27,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Icon(Icons.add_a_photo),
                 ),
                 ListTile(
-                  title: Text('Settings'),
+                  title: Text(Strings.settingsTitle),
                   onTap: () {
                     Navigator.pushNamed(context, Routes.settingsRoute);
                   },

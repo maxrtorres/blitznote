@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
         title: Strings.appTitle,
         home: HomeScreen(),
         routes: {
+          Routes.homeRoute: (context) => HomeScreen(),
           Routes.settingsRoute: (context) => SettingsScreen(),
         });
   }
