@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:notes_app/model/note.dart';
 import 'package:notes_app/values/my_colors.dart';
+import 'package:notes_app/values/routes.dart';
 
 class ListTab extends StatefulWidget {
   @override
@@ -45,16 +45,20 @@ class _ListTabState extends State<ListTab> {
           context: context,
           tiles: notes.map((note) => new ListTile(
                 title: new Text(note.title),
-                onTap: () {
-                  print(note.uuid);
-                },
+                subtitle: new Text(note.body),
+                onTap: () {},
               )),
         ).toList(),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
+        onPressed: () async {
+          final result =
+              await Navigator.pushNamed(context, Routes.createNoteRoute);
+          if (result == null) {
+            return;
+          }
           setState(() {
-            notes.add(new Note('foo', 'bar'));
+            notes.add(result);
           });
           storeNotes();
         },
