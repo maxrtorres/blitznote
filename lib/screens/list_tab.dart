@@ -40,7 +40,9 @@ class _ListTabState extends State<ListTab> {
           context: context,
           tiles: notes.map((note) => new ListTile(
                 title: new Text(note.title),
-                onTap: () {},
+                onTap: () {
+                  print(note.uuid);
+                },
               )),
         ).toList(),
       ),
