@@ -35,6 +35,37 @@ class _ListTabState extends State<ListTab> {
     box.put('notes', notes);
   }
 
+  showDeleteDialog(String title, String id) {
+    AlertDialog alert = AlertDialog(
+      title: Text('Delete \"$title\"?'),
+      actions: [
+        TextButton(
+          child: Text("Cancel"),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+        TextButton(
+          child: Text("Delete", style: TextStyle(color: MyColors.redColor)),
+          onPressed: () {
+            setState(() {
+              notes.removeWhere((element) => element.uuid == id);
+            });
+            storeNotes();
+            Navigator.of(context).pop();
+          },
+        ),
+      ],
+    );
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,6 +78,9 @@ class _ListTabState extends State<ListTab> {
                 title: new Text(note.title),
                 subtitle: new Text(note.body),
                 onTap: () {},
+                onLongPress: () {
+                  showDeleteDialog(note.title, note.uuid);
+                },
               )),
         ).toList(),
       ),
