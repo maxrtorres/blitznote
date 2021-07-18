@@ -19,7 +19,12 @@ class _ListTabState extends State<ListTab> {
 
   void getNotes() async {
     var box = await Hive.openBox('myBox');
-    List<dynamic> newNotes = box.get('notes');
+    List<dynamic> newNotes;
+    try {
+      newNotes = box.get('notes');
+    } catch (e) {
+      return;
+    }
     setState(() {
       notes = newNotes;
     });
