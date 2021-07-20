@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:notes_app/model/note.dart';
 import 'package:notes_app/values/my_colors.dart';
 import 'package:notes_app/values/routes.dart';
 
@@ -77,7 +78,19 @@ class _ListTabState extends State<ListTab> {
           tiles: notes.map((note) => new ListTile(
                 title: new Text(note.title),
                 subtitle: new Text(note.body),
-                onTap: () {},
+                onTap: () async {
+                  final result = await Navigator.pushNamed(
+                      context, Routes.viewNoteRoute,
+                      arguments: note) as Note;
+                  if (result == null) {
+                    return;
+                  }
+                  setState(() {
+                    note.title = result.title;
+                    note.body = result.body;
+                  });
+                  storeNotes();
+                },
                 onLongPress: () {
                   showDeleteDialog(note.title, note.uuid);
                 },

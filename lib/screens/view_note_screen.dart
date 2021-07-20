@@ -4,12 +4,12 @@ import 'package:notes_app/model/note.dart';
 import 'package:notes_app/values/my_colors.dart';
 import 'package:notes_app/values/strings.dart';
 
-class CreateNoteScreen extends StatefulWidget {
+class ViewNoteScreen extends StatefulWidget {
   @override
-  _CreateNoteScreenState createState() => _CreateNoteScreenState();
+  _ViewNoteScreenState createState() => _ViewNoteScreenState();
 }
 
-class _CreateNoteScreenState extends State<CreateNoteScreen> {
+class _ViewNoteScreenState extends State<ViewNoteScreen> {
   final titleController = TextEditingController();
   final bodyController = TextEditingController();
 
@@ -45,10 +45,14 @@ class _CreateNoteScreenState extends State<CreateNoteScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final note = ModalRoute.of(context)?.settings.arguments as Note;
+    titleController.text = note.title;
+    bodyController.text = note.body;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: MyColors.colorPrimary,
-        title: Text(Strings.createNoteTitle),
+        title: Text(Strings.viewNoteTitle),
       ),
       backgroundColor: MyColors.colorLight,
       body: Center(

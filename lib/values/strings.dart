@@ -3,6 +3,7 @@ class Strings {
   static const String homeTitle = "Notes";
   static const String settingsTitle = "Settings";
   static const String createNoteTitle = "Create Note";
+  static const String viewNoteTitle = "View Note";
   static const String save = "Save";
   static const String title = "Title";
   static const String body = "Body";

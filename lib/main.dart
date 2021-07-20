@@ -6,6 +6,7 @@ import 'package:notes_app/model/note.dart';
 import 'package:notes_app/screens/create_note_screen.dart';
 import 'package:notes_app/screens/home_screen.dart';
 import 'package:notes_app/screens/settings_screen.dart';
+import 'package:notes_app/screens/view_note_screen.dart';
 import 'package:notes_app/values/routes.dart';
 import 'package:notes_app/values/strings.dart';
 import 'package:path_provider/path_provider.dart' as pathProvider;
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
           Routes.homeRoute: (context) => HomeScreen(),
           Routes.settingsRoute: (context) => SettingsScreen(),
           Routes.createNoteRoute: (context) => CreateNoteScreen(),
+          Routes.viewNoteRoute: (context) => ViewNoteScreen(),
         });
   }
 }
