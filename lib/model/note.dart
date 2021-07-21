@@ -13,12 +13,4 @@ class Note extends HiveObject {
   String uuid = Uuid().v4();
 
   Note(this.title, this.body);
-
-  @override
-  bool operator ==(other) {
-    if (other is! Note) {
-      return false;
-    }
-    return uuid == (other as Note).uuid;
-  }
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:notes_app/model/note.dart';
+import 'package:notes_app/utilities/note_util.dart';
 import 'package:notes_app/values/my_colors.dart';
 import 'package:notes_app/values/strings.dart';
 
@@ -18,29 +17,6 @@ class _CreateNoteScreenState extends State<CreateNoteScreen> {
     super.dispose();
     titleController.dispose();
     bodyController.dispose();
-  }
-
-  void saveNote() {
-    final title = titleController.text;
-    final body = bodyController.text;
-
-    if (title == '' || title.trim() == '') {
-      Fluttertoast.showToast(
-          msg: Strings.nullTitleError,
-          toastLength: Toast.LENGTH_SHORT,
-          fontSize: 16.0);
-      return;
-    }
-
-    if (body == '' || body.trim() == '') {
-      Fluttertoast.showToast(
-          msg: Strings.nullBodyError,
-          toastLength: Toast.LENGTH_SHORT,
-          fontSize: 16.0);
-      return;
-    }
-
-    Navigator.pop(context, new Note(title, body));
   }
 
   @override
@@ -76,7 +52,9 @@ class _CreateNoteScreenState extends State<CreateNoteScreen> {
             ),
           ),
           TextButton(
-              onPressed: saveNote,
+              onPressed: () {
+                saveNote(context, titleController.text, bodyController.text);
+              },
               child: Text(Strings.save, style: TextStyle(fontSize: 20))),
         ],
       )),

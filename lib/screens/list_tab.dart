@@ -81,13 +81,14 @@ class _ListTabState extends State<ListTab> {
                 onTap: () async {
                   final result = await Navigator.pushNamed(
                       context, Routes.viewNoteRoute,
-                      arguments: note) as Note;
+                      arguments: note);
                   if (result == null) {
                     return;
                   }
+                  final newNote = result as Note;
                   setState(() {
-                    note.title = result.title;
-                    note.body = result.body;
+                    note.title = newNote.title;
+                    note.body = newNote.body;
                   });
                   storeNotes();
                 },
