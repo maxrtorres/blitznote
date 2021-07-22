@@ -1,4 +1,4 @@
-# notes_app
+# BlitzNote
 
 This is a cross platform mobile app (for both Android and iOS) built using the Flutter SDK. My goal is to provide users with a place to compose and store brief notes for later reference.
 
