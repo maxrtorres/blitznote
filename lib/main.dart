@@ -5,6 +5,7 @@ import 'package:hive/hive.dart';
 import 'package:notes_app/model/note.dart';
 import 'package:notes_app/screens/create_note_screen.dart';
 import 'package:notes_app/screens/home_screen.dart';
+import 'package:notes_app/screens/initial_screen.dart';
 import 'package:notes_app/screens/settings_screen.dart';
 import 'package:notes_app/screens/view_note_screen.dart';
 import 'package:notes_app/values/routes.dart';
@@ -24,9 +25,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: Strings.appTitle,
-        home: HomeScreen(),
+        title: Strings.homeTitle,
+        home: InitialScreen(),
         routes: {
+          Routes.initialRoute: (context) => InitialScreen(),
           Routes.homeRoute: (context) => HomeScreen(),
           Routes.settingsRoute: (context) => SettingsScreen(),
           Routes.createNoteRoute: (context) => CreateNoteScreen(),

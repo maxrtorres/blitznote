@@ -7,4 +7,5 @@ class MyColors {
   static const Color colorAccent = Color(0xFFE4E4C6);
 
   static const Color redColor = Color(0xFFFF0000);
+  static const Color whiteColor = Color(0xFFFFFFFF);
 }
