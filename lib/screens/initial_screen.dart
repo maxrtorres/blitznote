@@ -27,7 +27,7 @@ class _InitialScreenState extends State<InitialScreen> {
             ),
             TextButton(
               onPressed: () async {
-                bool success = await BiometricUtil.authenticate();
+                bool success = await BiometricUtil.checkBiometrics(context);
                 if (success) {
                   Navigator.pushReplacementNamed(context, Routes.homeRoute);
                 }

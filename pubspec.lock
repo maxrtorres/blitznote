@@ -217,7 +217,7 @@ packages:
     source: hosted
     version: "0.9.0"
   flutter_plugin_android_lifecycle:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: flutter_plugin_android_lifecycle
       url: "https://pub.dartlang.org"
