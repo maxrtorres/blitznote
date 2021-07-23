@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/utilities/biometric_util.dart' as BiometricUtil;
 import 'package:notes_app/values/my_colors.dart';
 import 'package:notes_app/values/routes.dart';
 import 'package:notes_app/values/strings.dart';
@@ -25,13 +26,16 @@ class _InitialScreenState extends State<InitialScreen> {
                       color: MyColors.whiteColor)),
             ),
             TextButton(
-              onPressed: () {
-                Navigator.pushReplacementNamed(context, Routes.homeRoute);
+              onPressed: () async {
+                bool success = await BiometricUtil.authenticate();
+                if (success) {
+                  Navigator.pushReplacementNamed(context, Routes.homeRoute);
+                }
               },
               child: Center(
                   child: Text(Strings.continueButton,
                       style: TextStyle(
-                          fontSize: 30,
+                          fontSize: 25,
                           fontWeight: FontWeight.w100,
                           color: MyColors.whiteColor))),
             ),
