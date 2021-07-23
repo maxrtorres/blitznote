@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/model/note.dart';
-import 'package:notes_app/utilities/note_util.dart';
+import 'package:notes_app/utilities/note_util.dart' as NoteUtil;
 import 'package:notes_app/values/my_colors.dart';
 import 'package:notes_app/values/strings.dart';
 
@@ -58,7 +58,8 @@ class _ViewNoteScreenState extends State<ViewNoteScreen> {
           ),
           TextButton(
               onPressed: () {
-                saveNote(context, titleController.text, bodyController.text);
+                NoteUtil.saveNote(
+                    context, titleController.text, bodyController.text);
               },
               child: Text(Strings.save, style: TextStyle(fontSize: 20))),
         ],
