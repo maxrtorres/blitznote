@@ -69,8 +69,10 @@ class _SearchTabState extends State<SearchTab> {
               children: ListTile.divideTiles(
                 context: context,
                 tiles: queryResult.map((note) => new ListTile(
-                      title: new Text(note.title),
-                      subtitle: new Text(note.body),
+                      title:
+                          new Text(note.title, style: TextStyle(fontSize: 20)),
+                      subtitle:
+                          new Text(note.body, style: TextStyle(fontSize: 15)),
                     )),
               ).toList(),
             ),

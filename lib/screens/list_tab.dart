@@ -77,8 +77,8 @@ class _ListTabState extends State<ListTab> {
         children: ListTile.divideTiles(
           context: context,
           tiles: notes.map((note) => new ListTile(
-                title: new Text(note.title),
-                subtitle: new Text(note.body),
+                title: new Text(note.title, style: TextStyle(fontSize: 20)),
+                subtitle: new Text(note.body, style: TextStyle(fontSize: 15)),
                 onTap: () async {
                   final result = await Navigator.pushNamed(
                       context, Routes.editNoteRoute,

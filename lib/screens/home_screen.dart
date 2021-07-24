@@ -42,8 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   child: Center(
                       child: Text('Welcome, $username!',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16))),
+                          style: TextStyle(fontSize: 20))),
                 ),
                 ListTile(
                   title: Text(Strings.settingsTitle),
