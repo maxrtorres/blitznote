@@ -14,32 +14,31 @@ class _InitialScreenState extends State<InitialScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: MyColors.colorPrimary,
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              margin: new EdgeInsets.symmetric(vertical: 40),
-              child: Text(Strings.appTitle,
-                  style: TextStyle(
-                      fontSize: 50,
-                      fontWeight: FontWeight.w300,
-                      color: MyColors.whiteColor)),
-            ),
-            TextButton(
-              onPressed: () async {
-                bool success = await BiometricUtil.checkBiometrics(context);
-                if (success) {
-                  Navigator.pushReplacementNamed(context, Routes.homeRoute);
-                }
-              },
-              child: Center(
-                  child: Text(Strings.continueButton,
-                      style: TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.w100,
-                          color: MyColors.whiteColor))),
-            ),
-          ],
-        ));
+        body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Center(
+              child: Container(
+            margin: new EdgeInsets.symmetric(vertical: 40),
+            child: Text(Strings.appTitle,
+                style: TextStyle(
+                    fontSize: 60,
+                    fontWeight: FontWeight.w300,
+                    color: MyColors.whiteColor)),
+          )),
+          Center(
+              child: ElevatedButton(
+            style: ElevatedButton.styleFrom(primary: MyColors.colorLight),
+            onPressed: () async {
+              bool success = await BiometricUtil.checkBiometrics(context);
+              if (success) {
+                Navigator.pushReplacementNamed(context, Routes.homeRoute);
+              }
+            },
+            child: Text(Strings.continueButton,
+                style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.w100,
+                    color: MyColors.whiteColor)),
+          )),
+        ]));
   }
 }
