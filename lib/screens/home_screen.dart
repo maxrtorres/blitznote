@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/screens/list_tab.dart';
+import 'package:notes_app/screens/search_tab.dart';
 import 'package:notes_app/utilities/storage_util.dart' as StorageUtil;
 import 'package:notes_app/values/keys.dart';
 import 'package:notes_app/values/my_colors.dart';
@@ -62,13 +63,13 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           body: TabBarView(children: [
             ListTab(),
-            Tab(icon: Icon(Icons.search)),
+            SearchTab(),
           ]),
           bottomNavigationBar: Material(
             color: MyColors.colorDark,
             child: TabBar(
               tabs: [
-                Tab(icon: Icon(Icons.list)),
+                Tab(icon: Icon(Icons.edit)),
                 Tab(icon: Icon(Icons.search)),
               ],
             ),

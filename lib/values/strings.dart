@@ -13,4 +13,5 @@ class Strings {
   static const String continueButton = "Continue";
   static const String defaultUsername = "User";
   static const String username = "Username";
+  static const String search = "Search";
 }
