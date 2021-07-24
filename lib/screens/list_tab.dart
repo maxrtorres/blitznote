@@ -81,7 +81,7 @@ class _ListTabState extends State<ListTab> {
                 subtitle: new Text(note.body),
                 onTap: () async {
                   final result = await Navigator.pushNamed(
-                      context, Routes.viewNoteRoute,
+                      context, Routes.editNoteRoute,
                       arguments: note);
                   if (result == null) {
                     return;
