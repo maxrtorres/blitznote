@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:notes_app/model/note.dart';
+import 'package:notes_app/values/keys.dart';
 import 'package:notes_app/values/my_colors.dart';
 import 'package:notes_app/values/routes.dart';
 
@@ -19,10 +20,10 @@ class _ListTabState extends State<ListTab> {
   }
 
   void getNotes() async {
-    var box = await Hive.openBox('myBox');
+    var box = await Hive.openBox(Keys.box);
     List<dynamic> newNotes;
     try {
-      newNotes = box.get('notes');
+      newNotes = box.get(Keys.notes);
     } catch (e) {
       return;
     }
@@ -32,8 +33,8 @@ class _ListTabState extends State<ListTab> {
   }
 
   storeNotes() async {
-    var box = await Hive.openBox('myBox');
-    box.put('notes', notes);
+    var box = await Hive.openBox(Keys.box);
+    box.put(Keys.notes, notes);
   }
 
   showDeleteDialog(String title, String id) {
