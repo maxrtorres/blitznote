@@ -10,4 +10,5 @@ class Strings {
   static const String nullTitleError = "Title cannot be empty";
   static const String nullBodyError = "Body cannot be empty";
   static const String continueButton = "Continue";
+  static const String defaultUsername = "User";
 }
