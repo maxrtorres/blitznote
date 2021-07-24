@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/screens/list_tab.dart';
-import 'package:notes_app/utilities/storage_util.dart' as StorageUtilities;
+import 'package:notes_app/utilities/storage_util.dart' as StorageUtil;
 import 'package:notes_app/values/keys.dart';
 import 'package:notes_app/values/my_colors.dart';
 import 'package:notes_app/values/routes.dart';
@@ -12,8 +12,21 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  String username = Strings.defaultUsername;
+
+  Future<void> getUsername() async {
+    final name = await StorageUtil.getString(Keys.username);
+    if (name != null) {
+      setState(() {
+        username = name;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    getUsername();
+
     return DefaultTabController(
         length: 2,
         child: Scaffold(
@@ -26,27 +39,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   decoration: BoxDecoration(
                     color: MyColors.colorAccent,
                   ),
-                  child: FutureBuilder<dynamic>(
-                    future: StorageUtilities.getString(Keys.username),
-                    builder: (BuildContext context,
-                        AsyncSnapshot<dynamic> snapshot) {
-                      String username;
-                      if (snapshot.data != null) {
-                        username = snapshot.data;
-                      } else {
-                        username = Strings.defaultUsername;
-                      }
-                      return Center(
-                          child: Text('Welcome, $username!',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 16)));
-                    },
-                  ),
+                  child: Center(
+                      child: Text('Welcome, $username!',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 16))),
                 ),
                 ListTile(
                   title: Text(Strings.settingsTitle),
                   onTap: () {
-                    Navigator.pushNamed(context, Routes.settingsRoute);
+                    Navigator.pushNamed(context, Routes.settingsRoute)
+                        .then((value) async {
+                      await getUsername();
+                    });
                   },
                 ),
               ],
