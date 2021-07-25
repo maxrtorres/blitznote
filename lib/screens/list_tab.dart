@@ -71,7 +71,7 @@ class _ListTabState extends State<ListTab> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MyColors.colorLight,
+      backgroundColor: MyColors.colorBackground,
       body: new ListView(
         scrollDirection: Axis.vertical,
         children: ListTile.divideTiles(
@@ -112,7 +112,7 @@ class _ListTabState extends State<ListTab> {
           storeNotes();
         },
         child: const Icon(Icons.add),
-        backgroundColor: MyColors.colorDark,
+        backgroundColor: MyColors.colorTabs,
       ),
     );
   }

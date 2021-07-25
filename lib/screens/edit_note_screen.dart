@@ -31,7 +31,7 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
         backgroundColor: MyColors.colorPrimary,
         title: Text(Strings.editNoteTitle),
       ),
-      backgroundColor: MyColors.colorLight,
+      backgroundColor: MyColors.colorBackground,
       body: Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

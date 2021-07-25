@@ -35,7 +35,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         backgroundColor: MyColors.colorPrimary,
         title: Text(Strings.settingsTitle),
       ),
-      backgroundColor: MyColors.colorLight,
+      backgroundColor: MyColors.colorBackground,
       body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
         Container(
           margin: EdgeInsets.all(20),

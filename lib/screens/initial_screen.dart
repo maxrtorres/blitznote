@@ -26,7 +26,9 @@ class _InitialScreenState extends State<InitialScreen> {
           )),
           Center(
               child: ElevatedButton(
-            style: ElevatedButton.styleFrom(primary: MyColors.colorLight),
+            style: ElevatedButton.styleFrom(
+                primary: MyColors.colorContinueButton,
+                padding: EdgeInsets.all(10)),
             onPressed: () async {
               bool success = await BiometricUtil.checkBiometrics(context);
               if (success) {
@@ -36,7 +38,7 @@ class _InitialScreenState extends State<InitialScreen> {
             child: Text(Strings.continueButton,
                 style: TextStyle(
                     fontSize: 30,
-                    fontWeight: FontWeight.w100,
+                    fontWeight: FontWeight.w300,
                     color: MyColors.whiteColor)),
           )),
         ]));

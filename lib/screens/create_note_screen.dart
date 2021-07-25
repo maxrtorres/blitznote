@@ -26,7 +26,7 @@ class _CreateNoteScreenState extends State<CreateNoteScreen> {
         backgroundColor: MyColors.colorPrimary,
         title: Text(Strings.createNoteTitle),
       ),
-      backgroundColor: MyColors.colorLight,
+      backgroundColor: MyColors.colorBackground,
       body: Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

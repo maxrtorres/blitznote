@@ -56,7 +56,7 @@ class _SearchTabState extends State<SearchTab> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: MyColors.colorLight,
+        backgroundColor: MyColors.colorBackground,
         body: Column(children: [
           TextField(
             onChanged: (value) => filter(value),
