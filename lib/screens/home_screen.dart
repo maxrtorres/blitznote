@@ -31,19 +31,20 @@ class _HomeScreenState extends State<HomeScreen> {
     return DefaultTabController(
         length: 2,
         child: Scaffold(
-          backgroundColor: MyColors.colorLight,
+          backgroundColor: MyColors.colorBackground,
           endDrawer: Drawer(
             child: ListView(
               padding: EdgeInsets.zero,
               children: [
                 DrawerHeader(
                   decoration: BoxDecoration(
-                    color: MyColors.colorAccent,
+                    color: MyColors.colorDrawerHeader,
                   ),
                   child: Center(
-                      child: Text('Welcome, $username!',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16))),
+                      child: Text(
+                    'Welcome, $username!',
+                    style: TextStyle(fontSize: 16),
+                  )),
                 ),
                 ListTile(
                   title: Text(Strings.settingsTitle),
@@ -66,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
             SearchTab(),
           ]),
           bottomNavigationBar: Material(
-            color: MyColors.colorDark,
+            color: MyColors.colorTabs,
             child: TabBar(
               tabs: [
                 Tab(icon: Icon(Icons.edit)),

@@ -71,17 +71,17 @@ class _ListTabState extends State<ListTab> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MyColors.colorLight,
+      backgroundColor: MyColors.colorBackground,
       body: new ListView(
         scrollDirection: Axis.vertical,
         children: ListTile.divideTiles(
           context: context,
           tiles: notes.map((note) => new ListTile(
-                title: new Text(note.title),
-                subtitle: new Text(note.body),
+                title: new Text(note.title, style: TextStyle(fontSize: 20)),
+                subtitle: new Text(note.body, style: TextStyle(fontSize: 15)),
                 onTap: () async {
                   final result = await Navigator.pushNamed(
-                      context, Routes.viewNoteRoute,
+                      context, Routes.editNoteRoute,
                       arguments: note);
                   if (result == null) {
                     return;
@@ -112,7 +112,7 @@ class _ListTabState extends State<ListTab> {
           storeNotes();
         },
         child: const Icon(Icons.add),
-        backgroundColor: MyColors.colorDark,
+        backgroundColor: MyColors.colorTabs,
       ),
     );
   }

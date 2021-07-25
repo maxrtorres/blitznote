@@ -4,12 +4,12 @@ import 'package:notes_app/utilities/note_util.dart' as NoteUtil;
 import 'package:notes_app/values/my_colors.dart';
 import 'package:notes_app/values/strings.dart';
 
-class ViewNoteScreen extends StatefulWidget {
+class EditNoteScreen extends StatefulWidget {
   @override
-  _ViewNoteScreenState createState() => _ViewNoteScreenState();
+  _EditNoteScreenState createState() => _EditNoteScreenState();
 }
 
-class _ViewNoteScreenState extends State<ViewNoteScreen> {
+class _EditNoteScreenState extends State<EditNoteScreen> {
   final titleController = TextEditingController();
   final bodyController = TextEditingController();
 
@@ -29,9 +29,9 @@ class _ViewNoteScreenState extends State<ViewNoteScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: MyColors.colorPrimary,
-        title: Text(Strings.viewNoteTitle),
+        title: Text(Strings.editNoteTitle),
       ),
-      backgroundColor: MyColors.colorLight,
+      backgroundColor: MyColors.colorBackground,
       body: Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
