@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:notes_app/utilities/storage_util.dart' as StorageUtil;
 import 'package:notes_app/values/keys.dart';
 import 'package:notes_app/values/my_colors.dart';
+import 'package:notes_app/values/strings.dart';
 
 final localAuth = LocalAuthentication();
 
@@ -52,6 +54,15 @@ enrollBiometrics(context) async {
 }
 
 authenticateWithBiometrics() async {
-  return await localAuth.authenticate(
-      localizedReason: 'Authenticate with Biometrics', biometricOnly: true);
+  bool success = false;
+  try {
+    success = await localAuth.authenticate(
+        localizedReason: 'Authenticate with Biometrics', biometricOnly: true);
+  } catch (e) {
+    Fluttertoast.showToast(
+        msg: Strings.missingBiometricsError,
+        toastLength: Toast.LENGTH_LONG,
+        fontSize: 16.0);
+  }
+  return success;
 }

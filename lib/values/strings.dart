@@ -10,6 +10,8 @@ class Strings {
   static const String nullTitleError = "Title cannot be empty";
   static const String nullBodyError = "Body cannot be empty";
   static const String nullUsernameError = "Username cannot be empty";
+  static const String missingBiometricsError =
+      "You must enable biometrics on your device";
   static const String continueButton = "Continue";
   static const String defaultUsername = "User";
   static const String username = "Username";
