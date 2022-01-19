@@ -10,26 +10,25 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  final usernameController = TextEditingController();
+  final nameController = TextEditingController();
 
   @override
   void dispose() {
-    final name = usernameController.text;
+    final name = nameController.text;
     if (name != '' && name.trim() != '') {
-      StorageUtil.setString(Keys.username, name);
+      StorageUtil.setString(Keys.name, name);
     }
-    usernameController.dispose();
+    nameController.dispose();
     super.dispose();
   }
 
   void initializeFields() async {
-    usernameController.text = await StorageUtil.getString(Keys.username) ?? '';
+    nameController.text = await StorageUtil.getString(Keys.name) ?? '';
   }
 
   @override
   Widget build(BuildContext context) {
     initializeFields();
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: MyColors.colorPrimary,
@@ -40,10 +39,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
         Container(
           margin: EdgeInsets.all(20),
           child: TextField(
-            controller: usernameController,
+            controller: nameController,
             decoration: InputDecoration(
               border: OutlineInputBorder(),
-              labelText: Strings.username,
+              labelText: Strings.name,
             ),
           ),
         ),

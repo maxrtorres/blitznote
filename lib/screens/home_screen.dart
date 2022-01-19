@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/screens/list_tab.dart';
 import 'package:notes_app/screens/search_tab.dart';
-import 'package:notes_app/utilities/storage_util.dart' as StorageUtil;
-import 'package:notes_app/values/keys.dart';
 import 'package:notes_app/values/my_colors.dart';
 import 'package:notes_app/values/routes.dart';
 import 'package:notes_app/values/strings.dart';
@@ -13,21 +11,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String username = Strings.defaultUsername;
-
-  Future<void> getUsername() async {
-    final name = await StorageUtil.getString(Keys.username);
-    if (name != null) {
-      setState(() {
-        username = name;
-      });
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
-    getUsername();
-
     return DefaultTabController(
         length: 2,
         child: Scaffold(
@@ -37,22 +22,14 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: EdgeInsets.zero,
               children: [
                 DrawerHeader(
-                  decoration: BoxDecoration(
-                    color: MyColors.colorDrawerHeader,
-                  ),
-                  child: Center(
-                      child: Text(
-                    'Welcome, $username!',
-                    style: TextStyle(fontSize: 16),
-                  )),
-                ),
+                    decoration: BoxDecoration(
+                      color: MyColors.colorDrawerHeader,
+                    ),
+                    child: Container()),
                 ListTile(
                   title: Text(Strings.settingsTitle),
                   onTap: () {
-                    Navigator.pushNamed(context, Routes.settingsRoute)
-                        .then((value) async {
-                      await getUsername();
-                    });
+                    Navigator.pushNamed(context, Routes.settingsRoute);
                   },
                 ),
               ],
