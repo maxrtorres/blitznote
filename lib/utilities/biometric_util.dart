@@ -11,10 +11,10 @@ final localAuth = LocalAuthentication();
 Future<bool> checkBiometrics(context) async {
   if (await isEnrolledBiometrics()) {
     return await authenticateWithBiometrics();
-  } else if (await hasBiometrics()) {
+  }
+  if (await hasBiometricHardware()) {
     await enrollBiometrics(context);
   }
-
   return true;
 }
 
@@ -22,7 +22,7 @@ isEnrolledBiometrics() async {
   return await StorageUtil.getString(Keys.isEnrolledBiometrics) == 'true';
 }
 
-hasBiometrics() async {
+hasBiometricHardware() async {
   return await localAuth.canCheckBiometrics;
 }
 
@@ -32,7 +32,7 @@ enrollBiometrics(context) async {
     barrierDismissible: false,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: const Text('Enroll in Biometrics?'),
+        title: const Text('Enable biometric authentication?'),
         actions: <Widget>[
           TextButton(
             child: const Text('Yes'),
@@ -57,7 +57,7 @@ authenticateWithBiometrics() async {
   bool success = false;
   try {
     success = await localAuth.authenticate(
-        localizedReason: 'Authenticate with Biometrics', biometricOnly: true);
+        localizedReason: 'Authenticate with biometrics', biometricOnly: true);
   } catch (e) {
     Fluttertoast.showToast(
         msg: Strings.missingBiometricsError,
