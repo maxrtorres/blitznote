@@ -11,9 +11,8 @@ class Strings {
   static const String nullBodyError = "Body cannot be empty";
   static const String nullUsernameError = "Username cannot be empty";
   static const String missingBiometricsError =
-      "You must enable biometrics on your device";
+      "You must set up biometrics on your device";
   static const String continueButton = "Continue";
-  static const String defaultUsername = "User";
-  static const String username = "Username";
+  static const String name = "Name";
   static const String search = "Search";
 }
