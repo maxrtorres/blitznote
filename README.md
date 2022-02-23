@@ -1,9 +1,5 @@
 # BlitzNote
-### [BlitzNote - on Google Play](https://play.google.com/store/apps/details?id=com.blitznote)
 
-This is a cross platform mobile app (Android and iOS) built using the Flutter SDK.
+This is a cross-platform mobile app (Android and iOS) that I built using the Flutter SDK. It is a simple note-taking app with authentication and filtering capabilities.
 
-### Features
-- Write brief notes for later viewing 
-- Store notes securely with biometric authentication (Fingerprint or Face ID)
-- Search notes by keyword
+### [Try it on Google Play!](https://play.google.com/store/apps/details?id=com.blitznote)
