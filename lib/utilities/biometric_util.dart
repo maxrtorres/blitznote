@@ -22,6 +22,10 @@ isEnrolledBiometrics() async {
   return await StorageUtil.getString(Keys.isEnrolledBiometrics) == 'true';
 }
 
+unEnrollBiometrics() async {
+  await StorageUtil.setString(Keys.isEnrolledBiometrics, "");
+}
+
 hasBiometricHardware() async {
   return await localAuth.canCheckBiometrics;
 }
