@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/model/note.dart';
 import 'package:notes_app/utilities/note_util.dart' as NoteUtil;
 import 'package:notes_app/values/my_colors.dart';
 import 'package:notes_app/values/strings.dart';
@@ -21,10 +22,20 @@ class _CreateNoteScreenState extends State<CreateNoteScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final note = ModalRoute.of(context)?.settings.arguments as Note?;
+    Text title;
+    if (note == null) {
+      title = Text(Strings.createNoteTitle);
+    } else {
+      title = Text(Strings.editNoteTitle);
+      titleController.text = note.title;
+      bodyController.text = note.body;
+    }
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: MyColors.colorPrimary,
-        title: Text(Strings.createNoteTitle),
+        title: title,
       ),
       backgroundColor: MyColors.colorBackground,
       body: Center(
