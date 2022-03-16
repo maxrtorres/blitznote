@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/screens/list_tab.dart';
-import 'package:notes_app/screens/search_tab.dart';
 import 'package:notes_app/values/my_colors.dart';
 import 'package:notes_app/values/routes.dart';
 import 'package:notes_app/values/strings.dart';
@@ -40,8 +39,8 @@ class _HomeScreenState extends State<HomeScreen> {
             title: Text(Strings.homeTitle),
           ),
           body: TabBarView(children: [
-            ListTab(),
-            SearchTab(),
+            ListTab(isSearch: false),
+            ListTab(isSearch: true),
           ]),
           bottomNavigationBar: Material(
             color: MyColors.colorTabs,
