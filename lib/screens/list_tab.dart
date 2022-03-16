@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:notes_app/model/note.dart';
+import 'package:notes_app/utilities/note_util.dart';
 import 'package:notes_app/values/keys.dart';
 import 'package:notes_app/values/my_colors.dart';
 import 'package:notes_app/values/routes.dart';
@@ -32,40 +33,16 @@ class _ListTabState extends State<ListTab> {
     });
   }
 
-  storeNotes() async {
-    var box = await Hive.openBox(Keys.box);
-    box.put(Keys.notes, notes);
+  void deleteCallback(String id) {
+    setState(() {
+      notes.removeWhere((element) => element.uuid == id);
+    });
+    storeNotes();
   }
 
-  showDeleteDialog(String title, String id) {
-    AlertDialog alert = AlertDialog(
-      title: Text('Delete \"$title\"?'),
-      actions: [
-        TextButton(
-          child: Text("Cancel"),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-        TextButton(
-          child: Text("Delete", style: TextStyle(color: MyColors.redColor)),
-          onPressed: () {
-            setState(() {
-              notes.removeWhere((element) => element.uuid == id);
-            });
-            storeNotes();
-            Navigator.of(context).pop();
-          },
-        ),
-      ],
-    );
-
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return alert;
-      },
-    );
+  void storeNotes() async {
+    var box = await Hive.openBox(Keys.box);
+    box.put(Keys.notes, notes);
   }
 
   @override
@@ -94,7 +71,8 @@ class _ListTabState extends State<ListTab> {
                   storeNotes();
                 },
                 onLongPress: () {
-                  showDeleteDialog(note.title, note.uuid);
+                  showDeleteDialog(
+                      note.title, note.uuid, context, deleteCallback);
                 },
               )),
         ).toList(),
